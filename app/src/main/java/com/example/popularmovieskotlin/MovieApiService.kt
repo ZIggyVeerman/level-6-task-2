@@ -1,4 +1,4 @@
 package com.example.popularmovieskotlin
 
-class movieAdapter {
+class MovieApiService {
 }
