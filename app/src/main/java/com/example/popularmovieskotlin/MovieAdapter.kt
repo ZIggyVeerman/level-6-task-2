@@ -31,11 +31,12 @@ class MovieAdapter(private val movies: List<MovieItem>, private val Onclick: (Mo
             itemView.setOnClickListener { Onclick(movies[adapterPosition]) }
         }
 
-        fun bind(colorItem: MovieItem) {
-            Glide.with(context).load(colorItem.getImageUrl()).into(itemView.ivMovie)
+        fun bind(movieItem: MovieItem) {
+            itemView.tvMovieTitle.text =
+                context.getString(R.string.title, "${adapterPosition + 1}_")
+            Glide.with(context).load(MovieApi.imageUrl + movieItem.poster).into(itemView.ivMovie)
         }
     }
-
 
 //    topicListView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
 
