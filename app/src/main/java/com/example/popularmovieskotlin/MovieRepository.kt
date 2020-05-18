@@ -16,9 +16,7 @@ class MovieRepository {
 
     suspend fun getMovie(year: Int) {
         try {
-            val result = withTimeout(5_000) {
-                movieApi.getMovies(key, year)
-            }
+            val result = movieApi.getMovies(key, year)
 
             _movie.value = result
         } catch (error: Throwable) {

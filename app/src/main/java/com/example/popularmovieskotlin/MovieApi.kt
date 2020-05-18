@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MovieApi {
     companion object {
-        private const val baseUrl = "https://api.themoviedb.org/3/"
+        private const val baseUrl = "https://api.themoviedb.org/"
         const val imageUrl = "https://image.tmdb.org/t/p/w500/"
 
         fun createApi(): MovieApiService {

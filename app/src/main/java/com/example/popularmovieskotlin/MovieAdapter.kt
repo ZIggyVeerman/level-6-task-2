@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item.view.*
 
-class MovieAdapter(private val movies: List<MovieItem>, private val Onclick: (MovieItem) -> Unit) :
+class MovieAdapter(private val movies: List<MovieItem>, private val Onclick: ((MovieItem) -> Unit)) :
     RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     private lateinit var context: Context
@@ -37,7 +37,4 @@ class MovieAdapter(private val movies: List<MovieItem>, private val Onclick: (Mo
             Glide.with(context).load(MovieApi.imageUrl + movieItem.poster).into(itemView.ivMovie)
         }
     }
-
-//    topicListView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-
 }

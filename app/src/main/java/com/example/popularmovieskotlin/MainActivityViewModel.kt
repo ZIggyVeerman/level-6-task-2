@@ -10,7 +10,7 @@ class MainActivityViewModel : ViewModel() {
 
     private val movieRepository = MovieRepository()
 
-    val movies = MutableLiveData<Array<MovieItem>>()
+    val movies = movieRepository.movie
 
     private val _errorText: MutableLiveData<String> = MutableLiveData()
 
