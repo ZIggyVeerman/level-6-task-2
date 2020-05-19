@@ -1,5 +1,6 @@
-package com.example.popularmovieskotlin
+package com.example.popularmovieskotlin.api
 
+import com.example.popularmovieskotlin.model.ResultSetWithMovies
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -8,6 +9,5 @@ interface MovieApiService {
     suspend fun getMovies(
         @Query("api_key") api_key: String,
         @Query("year") year: Int
-    ):
-            MovieItem
+    ): ResultSetWithMovies
 }

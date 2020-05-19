@@ -1,8 +1,11 @@
-package com.example.popularmovieskotlin
+package com.example.popularmovieskotlin.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.withTimeout
+import com.example.popularmovieskotlin.BuildConfig
+import com.example.popularmovieskotlin.api.MovieApi
+import com.example.popularmovieskotlin.api.MovieApiService
+import com.example.popularmovieskotlin.model.MovieItem
 
 const val key: String = BuildConfig.API_KEY
 
@@ -18,9 +21,15 @@ class MovieRepository {
         try {
             val result = movieApi.getMovies(key, year)
 
-            _movie.value = result
+            result.movies.forEach {
+                _movie.postValue(it)
+            }
+
         } catch (error: Throwable) {
-            throw MovieRefreshError("Unable to fetch movie", error)
+            throw MovieRefreshError(
+                "Unable to fetch movie",
+                error
+            )
         }
     }
 

@@ -1,19 +1,24 @@
-package com.example.popularmovieskotlin
+package com.example.popularmovieskotlin.activity
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.popularmovieskotlin.viewmodels.MainActivityViewModel
+import com.example.popularmovieskotlin.adapter.MovieAdapter
+import com.example.popularmovieskotlin.model.MovieItem
+import com.example.popularmovieskotlin.R
 import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private val movies = arrayListOf<MovieItem>()
-    private val movieAdapter = MovieAdapter(movies) { movieItem -> onMovieClick(movieItem) }
+    private val movieAdapter =
+        MovieAdapter(movies) { movieItem ->
+            onMovieClick(movieItem)
+        }
     private lateinit var viewModel: MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +39,7 @@ class MainActivity : AppCompatActivity() {
     private fun observeViewModel() {
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         viewModel.movies.observe(this, Observer { movie ->
+            movie.
             movies.clear()
             movies.addAll(listOf(movie))
             movieAdapter.notifyDataSetChanged()

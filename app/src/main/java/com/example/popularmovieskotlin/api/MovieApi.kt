@@ -1,4 +1,4 @@
-package com.example.popularmovieskotlin
+package com.example.popularmovieskotlin.api
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

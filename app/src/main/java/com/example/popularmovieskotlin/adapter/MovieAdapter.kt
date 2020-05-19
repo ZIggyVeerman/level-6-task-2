@@ -1,4 +1,4 @@
-package com.example.popularmovieskotlin
+package com.example.popularmovieskotlin.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.popularmovieskotlin.api.MovieApi
+import com.example.popularmovieskotlin.R
+import com.example.popularmovieskotlin.model.MovieItem
 import kotlinx.android.synthetic.main.item.view.*
 
 class MovieAdapter(private val movies: List<MovieItem>, private val Onclick: ((MovieItem) -> Unit)) :
@@ -32,8 +35,8 @@ class MovieAdapter(private val movies: List<MovieItem>, private val Onclick: ((M
         }
 
         fun bind(movieItem: MovieItem) {
-            itemView.tvMovieTitle.text =
-                context.getString(R.string.title, "${adapterPosition + 1}_")
+//            itemView.tvMovieTitle.text =
+//                context.getString(R.string.title, "${adapterPosition}_")
             Glide.with(context).load(MovieApi.imageUrl + movieItem.poster).into(itemView.ivMovie)
         }
     }
