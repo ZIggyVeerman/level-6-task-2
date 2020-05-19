@@ -39,9 +39,8 @@ class MainActivity : AppCompatActivity() {
     private fun observeViewModel() {
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         viewModel.movies.observe(this, Observer { movie ->
-            movie.
             movies.clear()
-            movies.addAll(listOf(movie))
+            movies.addAll(movie)
             movieAdapter.notifyDataSetChanged()
         })
 

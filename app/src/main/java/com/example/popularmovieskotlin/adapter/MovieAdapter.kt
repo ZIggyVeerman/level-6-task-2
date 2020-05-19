@@ -11,7 +11,10 @@ import com.example.popularmovieskotlin.R
 import com.example.popularmovieskotlin.model.MovieItem
 import kotlinx.android.synthetic.main.item.view.*
 
-class MovieAdapter(private val movies: List<MovieItem>, private val Onclick: ((MovieItem) -> Unit)) :
+class MovieAdapter(
+    private val movies: List<MovieItem>,
+    private val Onclick: ((MovieItem) -> Unit)
+) :
     RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     private lateinit var context: Context
@@ -35,8 +38,7 @@ class MovieAdapter(private val movies: List<MovieItem>, private val Onclick: ((M
         }
 
         fun bind(movieItem: MovieItem) {
-//            itemView.tvMovieTitle.text =
-//                context.getString(R.string.title, "${adapterPosition}_")
+            itemView.tvMovieTitle.text = context.getString(R.string.title, movieItem.title)
             Glide.with(context).load(MovieApi.imageUrl + movieItem.poster).into(itemView.ivMovie)
         }
     }

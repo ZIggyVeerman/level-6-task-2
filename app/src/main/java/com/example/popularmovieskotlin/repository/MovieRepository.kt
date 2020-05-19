@@ -12,23 +12,21 @@ const val key: String = BuildConfig.API_KEY
 class MovieRepository {
     private val movieApi: MovieApiService = MovieApi.createApi()
 
-    private val _movie: MutableLiveData<MovieItem> = MutableLiveData()
+    private val _movie: MutableLiveData<Array<MovieItem>> = MutableLiveData()
 
-    val movie: LiveData<MovieItem>
+    val movie: LiveData<Array<MovieItem>>
         get() = _movie
 
     suspend fun getMovie(year: Int) {
+
         try {
             val result = movieApi.getMovies(key, year)
 
-            result.movies.forEach {
-                _movie.postValue(it)
-            }
+            _movie.value = result.movies
 
         } catch (error: Throwable) {
             throw MovieRefreshError(
-                "Unable to fetch movie",
-                error
+                "Unable to fetch movie", error
             )
         }
     }
