@@ -1,5 +1,6 @@
 package com.example.popularmovieskotlin.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
@@ -11,6 +12,8 @@ import com.example.popularmovieskotlin.adapter.MovieAdapter
 import com.example.popularmovieskotlin.model.MovieItem
 import com.example.popularmovieskotlin.R
 import kotlinx.android.synthetic.main.content_main.*
+
+const val MOVIE_EXTRA = "EXTRA"
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,8 +54,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onMovieClick(movieItem: MovieItem) {
-
+        val intent = Intent(this, Detail::class.java)
+        intent.putExtra(MOVIE_EXTRA, movieItem)
+        startActivity(intent)
     }
-
-
 }

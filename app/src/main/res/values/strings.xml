@@ -4,4 +4,6 @@
     <string name="the_most_popular_movies_of">The most popular movies of</string>
     <string name="submit">Submit</string>
     <string name="title">%s</string>
+    <string name="picture_of_backdrop">Picture of Backdrop</string>
+    <string name="overview">Overview</string>
 </resources>
