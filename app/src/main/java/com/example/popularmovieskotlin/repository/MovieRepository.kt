@@ -12,9 +12,9 @@ const val key: String = BuildConfig.API_KEY
 class MovieRepository {
     private val movieApi: MovieApiService = MovieApi.createApi()
 
-    private val _movie: MutableLiveData<Array<MovieItem>> = MutableLiveData()
+    private val _movie: MutableLiveData<ArrayList<MovieItem>> = MutableLiveData()
 
-    val movie: LiveData<Array<MovieItem>>
+    val movie: LiveData<ArrayList<MovieItem>>
         get() = _movie
 
     suspend fun getMovie(year: Int) {
